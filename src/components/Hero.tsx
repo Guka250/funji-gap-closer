@@ -33,10 +33,7 @@ const Hero = () => {
         <div className="max-w-4xl mx-auto text-center animate-fade-in-up">
           {/* Headline */}
           <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 leading-tight pt-6">
-            Close math gaps faster with an{" "}
-            <span className="gradient-primary bg-clip-text text-transparent">
-              AI teaching copilot
-            </span>
+            Close math gaps faster with an AI teaching copilot
           </h1>
 
           {/* Subtext */}
