@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import funjiLogo from "@/assets/funji-logo.png";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -43,9 +44,9 @@ const Header = () => {
           {/* Logo */}
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="text-2xl md:text-3xl font-bold gradient-primary bg-clip-text text-transparent transition-smooth hover:scale-105"
+            className="transition-smooth hover:scale-105"
           >
-            FunJI
+            <img src={funjiLogo} alt="FunJI Logo" className="h-10 md:h-12" />
           </button>
 
           {/* Desktop Navigation */}

@@ -43,9 +43,6 @@ const ProblemSolution = () => {
         <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
           {/* Problem Side */}
           <div className="animate-fade-in">
-            <div className="inline-block px-4 py-1.5 rounded-full bg-destructive/10 text-destructive text-sm font-medium mb-4">
-              The Problem
-            </div>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
               Math education is{" "}
               <span className="text-destructive">failing students</span>
@@ -79,9 +76,6 @@ const ProblemSolution = () => {
 
           {/* Solution Side */}
           <div className="animate-fade-in" style={{ animationDelay: "200ms" }}>
-            <div className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-              Our Solution
-            </div>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
               AI + human expertise ={" "}
               <span className="gradient-primary bg-clip-text text-transparent">

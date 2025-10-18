@@ -31,16 +31,8 @@ const Hero = () => {
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-4xl mx-auto text-center animate-fade-in-up">
-          {/* Trust Badge */}
-          <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-accent/50 backdrop-blur-sm mb-6 shadow-custom-sm">
-            <Sparkles className="h-4 w-4 text-primary" />
-            <span className="text-sm font-medium text-primary">
-              Pre-Launch • Limited Early Access
-            </span>
-          </div>
-
           {/* Headline */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 leading-tight">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 leading-tight pt-6">
             Close math gaps faster with an{" "}
             <span className="gradient-primary bg-clip-text text-transparent">
               AI teaching copilot

@@ -32,9 +32,6 @@ const HowItWorks = () => {
     <section id="how-it-works" className="py-16 md:py-24 gradient-hero">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 md:mb-16 animate-fade-in">
-          <div className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-            How It Works
-          </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
             Three simple steps to{" "}
             <span className="gradient-primary bg-clip-text text-transparent">

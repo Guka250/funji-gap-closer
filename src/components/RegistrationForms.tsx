@@ -135,9 +135,6 @@ const RegistrationForms = () => {
     <section id="register" className="py-16 md:py-24 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 animate-fade-in">
-          <div className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-            Join the Early List
-          </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
             Apply for{" "}
             <span className="gradient-primary bg-clip-text text-transparent">
