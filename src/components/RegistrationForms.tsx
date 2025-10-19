@@ -137,9 +137,9 @@ const RegistrationForms = () => {
         <div className="text-center mb-12 animate-fade-in">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
             Apply for{" "}
-            <span2 style='color: purple'>
+            <span className="text-primary">
               early access
-            </span2>
+            </span>
           </h2>
           <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
             Be among the first to experience FunJI and enjoy exclusive early-bird benefits
