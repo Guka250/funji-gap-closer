@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { GraduationCap, Users, Send, CheckCircle2 } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -17,6 +16,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 
 const teacherFormSchema = z.object({
   name: z.string().trim().min(2, "Name must be at least 2 characters").max(100),
@@ -81,29 +81,29 @@ const RegistrationForms = () => {
 
   const onTeacherSubmit = async (data: TeacherFormData) => {
     try {
+      // Save to database
+      const { error } = await supabase.from("teachers").insert({
+        name: data.name,
+        email: data.email,
+        phone: data.phone || null,
+        city: data.city,
+        subjects: data.subjects,
+        years_teaching: data.yearsTeaching,
+        hourly_rate: data.hourlyRate,
+      });
+
+      if (error) {
+        throw error;
+      }
+
       // Analytics tracking
-      if (window.analytics) {
-        window.analytics.track("form_submit_teacher", {
+      if ((window as any).analytics) {
+        (window as any).analytics.track("form_submit_teacher", {
           city: data.city,
           subjects: data.subjects,
           yearsTeaching: data.yearsTeaching,
         });
       }
-
-      // Save to database
-      const { error } = await supabase
-        .from('teachers')
-        .insert({
-          name: data.name,
-          email: data.email,
-          phone: data.phone || null,
-          city: data.city,
-          subjects: data.subjects,
-          years_teaching: data.yearsTeaching,
-          hourly_rate: data.hourlyRate,
-        });
-
-      if (error) throw error;
 
       setTeacherSubmitted(true);
       toast.success("Registration successful! We'll be in touch soon.");
@@ -115,28 +115,28 @@ const RegistrationForms = () => {
 
   const onStudentSubmit = async (data: StudentFormData) => {
     try {
+      // Save to database
+      const { error } = await supabase.from("students").insert({
+        name: data.name,
+        email: data.email,
+        phone: data.phone || null,
+        city: data.city,
+        grade: data.grade,
+        exam_date: data.examDate || null,
+        challenges: data.challenges,
+      });
+
+      if (error) {
+        throw error;
+      }
+
       // Analytics tracking
-      if (window.analytics) {
-        window.analytics.track("form_submit_student", {
+      if ((window as any).analytics) {
+        (window as any).analytics.track("form_submit_student", {
           city: data.city,
           grade: data.grade,
         });
       }
-
-      // Save to database
-      const { error } = await supabase
-        .from('students')
-        .insert({
-          name: data.name,
-          email: data.email,
-          phone: data.phone || null,
-          city: data.city,
-          grade: data.grade,
-          exam_date: data.examDate || null,
-          challenges: data.challenges,
-        });
-
-      if (error) throw error;
 
       setStudentSubmitted(true);
       toast.success("Registration successful! We'll be in touch soon.");
@@ -487,14 +487,5 @@ const RegistrationForms = () => {
     </section>
   );
 };
-
-// Declare analytics on window for TypeScript
-declare global {
-  interface Window {
-    analytics?: {
-      track: (event: string, properties?: Record<string, unknown>) => void;
-    };
-  }
-}
 
 export default RegistrationForms;

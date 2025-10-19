@@ -14,14 +14,14 @@ import Footer from "@/components/Footer";
 const Index = () => {
   useEffect(() => {
     // Initialize analytics (placeholder implementation)
-    window.analytics = window.analytics || {
+    (window as any).analytics = (window as any).analytics || {
       track: (event: string, properties?: Record<string, unknown>) => {
         console.log("Analytics Event:", event, properties);
       },
     };
 
     // Track page view
-    window.analytics.track("page_view", { page: "landing_funji" });
+    (window as any).analytics.track("page_view", { page: "landing_funji" });
   }, []);
 
   return (
