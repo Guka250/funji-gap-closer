@@ -45,7 +45,7 @@ const ProblemSolution = () => {
           <div className="animate-fade-in">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
               Math education is{" "}
-              <span className="text-destructive">failing students</span>
+              <span2 style='color: red'>failing students</span2>
             </h2>
             <p className="text-lg text-foreground/70 mb-8">
               50% of students score below 25% on national math exams. Teachers
@@ -78,9 +78,9 @@ const ProblemSolution = () => {
           <div className="animate-fade-in" style={{ animationDelay: "200ms" }}>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
               AI + human expertise ={" "}
-              <span style="color: purple">
+              <span2 style="color: purple">
                 measurable progress
-              </span>
+              </span2>
             </h2>
             <p className="text-lg text-foreground/70 mb-8">
               FunJI empowers teachers with AI tools and gives families weekly,

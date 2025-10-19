@@ -40,10 +40,7 @@ const FAQ = () => {
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12 animate-fade-in">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-              Frequently asked{" "}
-              <span className="gradient-primary bg-clip-text text-transparent">
-                questions
-              </span>
+              Frequently asked questions
             </h2>
             <p className="text-lg text-foreground/70">
               Everything you need to know about FunJI

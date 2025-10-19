@@ -30,10 +30,7 @@ const Testimonials = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 animate-fade-in">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-            What early testers{" "}
-            <span className="gradient-primary bg-clip-text text-transparent">
-              are saying
-            </span>
+            What early testers are saying
           </h2>
           <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
             Real feedback from teachers and parents in our beta program

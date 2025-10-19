@@ -26,7 +26,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <h3 className="text-2xl md:text-3xl font-bold gradient-primary bg-clip-text text-transparent mb-4">
+            <h3>
               FunJI
             </h3>
             <p className="text-foreground/70 mb-4 max-w-md">

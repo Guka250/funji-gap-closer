@@ -34,9 +34,9 @@ const HowItWorks = () => {
         <div className="text-center mb-12 md:mb-16 animate-fade-in">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
             Three simple steps to{" "}
-            <span className="gradient-primary bg-clip-text text-transparent">
+            <span2 style='color: purple'>
               close gaps
-            </span>
+            </span2>
           </h2>
           <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
             From diagnosis to measurable progress in minutes, not months
