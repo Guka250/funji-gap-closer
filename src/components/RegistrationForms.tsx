@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { GraduationCap, Users, Send, CheckCircle2 } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -89,14 +90,21 @@ const RegistrationForms = () => {
         });
       }
 
-      // TODO: Replace with actual API endpoint
-      // await fetch('/api/interest/teacher', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(data),
-      // });
+      // Save to database
+      const { error } = await supabase
+        .from('teachers')
+        .insert({
+          name: data.name,
+          email: data.email,
+          phone: data.phone || null,
+          city: data.city,
+          subjects: data.subjects,
+          years_teaching: data.yearsTeaching,
+          hourly_rate: data.hourlyRate,
+        });
 
-      console.log("Teacher registration:", data);
+      if (error) throw error;
+
       setTeacherSubmitted(true);
       toast.success("Registration successful! We'll be in touch soon.");
     } catch (error) {
@@ -115,14 +123,21 @@ const RegistrationForms = () => {
         });
       }
 
-      // TODO: Replace with actual API endpoint
-      // await fetch('/api/interest/student', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(data),
-      // });
+      // Save to database
+      const { error } = await supabase
+        .from('students')
+        .insert({
+          name: data.name,
+          email: data.email,
+          phone: data.phone || null,
+          city: data.city,
+          grade: data.grade,
+          exam_date: data.examDate || null,
+          challenges: data.challenges,
+        });
 
-      console.log("Student registration:", data);
+      if (error) throw error;
+
       setStudentSubmitted(true);
       toast.success("Registration successful! We'll be in touch soon.");
     } catch (error) {
