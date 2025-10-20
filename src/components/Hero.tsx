@@ -10,8 +10,8 @@ const Hero = () => {
     }
 
     // Analytics tracking
-    if (window.analytics) {
-      window.analytics.track(
+    if ((window as any).analytics) {
+      (window as any).analytics.track(
         type === "teacher" ? "cta_click_teacher" : "cta_click_student"
       );
     }
