@@ -108,8 +108,10 @@ const RegistrationForms = () => {
       setTeacherSubmitted(true);
       toast.success("Registration successful! We'll be in touch soon.");
     } catch (error) {
-      toast.error("Something went wrong. Please try again.");
-      console.error("Teacher form error:", error);
+      toast.error("Registration failed. Please check your information and try again.");
+      if (import.meta.env.DEV) {
+        console.error("Teacher form error:", error);
+      }
     }
   };
 
@@ -141,8 +143,10 @@ const RegistrationForms = () => {
       setStudentSubmitted(true);
       toast.success("Registration successful! We'll be in touch soon.");
     } catch (error) {
-      toast.error("Something went wrong. Please try again.");
-      console.error("Student form error:", error);
+      toast.error("Registration failed. Please check your information and try again.");
+      if (import.meta.env.DEV) {
+        console.error("Student form error:", error);
+      }
     }
   };
 
