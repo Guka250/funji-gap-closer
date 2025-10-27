@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/form";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
+import { Link } from "react-router-dom";
 
 const teacherFormSchema = z.object({
   name: z.string().trim().min(2, "Name must be at least 2 characters").max(100),
@@ -306,8 +307,15 @@ const RegistrationForms = () => {
                         </FormControl>
                         <div className="space-y-1 leading-none">
                           <FormLabel className="text-sm font-normal text-foreground/80">
-                            By submitting, you agree to be contacted about FunJI's pre-launch.
-                            We respect your privacy.
+                            I agree to the{" "}
+                            <Link to="/terms" className="text-primary hover:underline font-medium">
+                              Terms of Service
+                            </Link>
+                            {" "}and{" "}
+                            <Link to="/privacy" className="text-primary hover:underline font-medium">
+                              Privacy Policy
+                            </Link>
+                            {" "}and consent to be contacted about FunJI's pre-launch.
                           </FormLabel>
                           <FormMessage />
                         </div>
@@ -469,8 +477,15 @@ const RegistrationForms = () => {
                         </FormControl>
                         <div className="space-y-1 leading-none">
                           <FormLabel className="text-sm font-normal text-foreground/80">
-                            By submitting, you agree to be contacted about FunJI's pre-launch.
-                            We respect your privacy.
+                            I agree to the{" "}
+                            <Link to="/terms" className="text-primary hover:underline font-medium">
+                              Terms of Service
+                            </Link>
+                            {" "}and{" "}
+                            <Link to="/privacy" className="text-primary hover:underline font-medium">
+                              Privacy Policy
+                            </Link>
+                            {" "}and consent to be contacted about FunJI's pre-launch.
                           </FormLabel>
                           <FormMessage />
                         </div>

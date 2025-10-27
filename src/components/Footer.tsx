@@ -1,12 +1,13 @@
 import { Mail, Twitter, Linkedin, Github } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const footerLinks = {
     legal: [
-      { label: "Privacy Policy", href: "#privacy" },
-      { label: "Terms of Service", href: "#terms" },
+      { label: "Privacy Policy", href: "/privacy" },
+      { label: "Terms of Service", href: "/terms" },
     ],
     contact: [
       { label: "Contact Us", href: "mailto:hello@funji.com" },
@@ -53,12 +54,12 @@ const Footer = () => {
             <ul className="space-y-2">
               {footerLinks.legal.map((link, index) => (
                 <li key={index}>
-                  <a
-                    href={link.href}
+                  <Link
+                    to={link.href}
                     className="text-foreground/70 hover:text-primary transition-smooth"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -85,7 +86,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <p className="text-foreground/60 text-sm">
-            © {currentYear} FunJI. All rights reserved.
+            © {currentYear} FunJI. Educational support, not a school. Tutors are independent.
           </p>
           <p className="text-foreground/60 text-sm">
             Built with ❤️ for teachers and students worldwide
