@@ -26,10 +26,9 @@ interface Teacher {
   name: string;
   email: string;
   phone: string | null;
-  city: string;
+  country: string;
   subjects: string;
   years_teaching: string;
-  hourly_rate: string;
   created_at: string;
 }
 
@@ -38,7 +37,7 @@ interface Student {
   name: string;
   email: string;
   phone: string | null;
-  city: string;
+  country: string;
   grade: string;
   exam_date: string | null;
   challenges: string;
@@ -222,16 +221,16 @@ const AdminDashboard = () => {
                           </div>
                         </TableCell>
                         <TableCell>
-                          <span className="flex items-center">
+                           <span className="flex items-center">
                             <MapPin className="mr-1 h-4 w-4 text-foreground/70" />
-                            {teacher.city}
+                            {teacher.country}
                           </span>
                         </TableCell>
                         <TableCell>
                           <div className="flex flex-col gap-1 text-sm">
                             <Badge variant="secondary">{teacher.subjects}</Badge>
                             <span className="text-foreground/70">
-                              {teacher.years_teaching} exp • {teacher.hourly_rate}
+                              {teacher.years_teaching} experience
                             </span>
                           </div>
                         </TableCell>
@@ -297,7 +296,7 @@ const AdminDashboard = () => {
                         <TableCell>
                           <span className="flex items-center">
                             <MapPin className="mr-1 h-4 w-4 text-foreground/70" />
-                            {student.city}
+                            {student.country}
                           </span>
                         </TableCell>
                         <TableCell>
