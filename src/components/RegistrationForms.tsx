@@ -23,10 +23,9 @@ const teacherFormSchema = z.object({
   name: z.string().trim().min(2, "Name must be at least 2 characters").max(100),
   email: z.string().trim().email("Invalid email address").max(255),
   phone: z.string().trim().max(20).optional(),
-  city: z.string().trim().min(2, "City is required").max(100),
+  country: z.string().trim().min(2, "Country is required").max(100),
   subjects: z.string().trim().min(2, "Please specify subjects/grades").max(200),
   yearsTeaching: z.string().trim().min(1, "Please specify years of experience").max(50),
-  hourlyRate: z.string().trim().min(1, "Please specify preferred hourly rate").max(50),
   consent: z.boolean().refine((val) => val === true, {
     message: "You must agree to be contacted",
   }),
@@ -36,7 +35,7 @@ const studentFormSchema = z.object({
   name: z.string().trim().min(2, "Name must be at least 2 characters").max(100),
   email: z.string().trim().email("Invalid email address").max(255),
   phone: z.string().trim().max(20).optional(),
-  city: z.string().trim().min(2, "City is required").max(100),
+  country: z.string().trim().min(2, "Country is required").max(100),
   grade: z.string().trim().min(1, "Grade is required").max(50),
   examDate: z.string().trim().max(100).optional(),
   challenges: z.string().trim().min(10, "Please describe current challenges").max(1000),
@@ -58,10 +57,9 @@ const RegistrationForms = () => {
       name: "",
       email: "",
       phone: "",
-      city: "",
+      country: "",
       subjects: "",
       yearsTeaching: "",
-      hourlyRate: "",
       consent: false,
     },
   });
@@ -72,7 +70,7 @@ const RegistrationForms = () => {
       name: "",
       email: "",
       phone: "",
-      city: "",
+      country: "",
       grade: "",
       examDate: "",
       challenges: "",
@@ -87,10 +85,9 @@ const RegistrationForms = () => {
         name: data.name,
         email: data.email,
         phone: data.phone || null,
-        city: data.city,
+        country: data.country,
         subjects: data.subjects,
         years_teaching: data.yearsTeaching,
-        hourly_rate: data.hourlyRate,
       });
 
       if (error) {
@@ -100,7 +97,7 @@ const RegistrationForms = () => {
       // Analytics tracking
       if ((window as any).analytics) {
         (window as any).analytics.track("form_submit_teacher", {
-          city: data.city,
+          country: data.country,
           subjects: data.subjects,
           yearsTeaching: data.yearsTeaching,
         });
@@ -123,7 +120,7 @@ const RegistrationForms = () => {
         name: data.name,
         email: data.email,
         phone: data.phone || null,
-        city: data.city,
+        country: data.country,
         grade: data.grade,
         exam_date: data.examDate || null,
         challenges: data.challenges,
@@ -136,7 +133,7 @@ const RegistrationForms = () => {
       // Analytics tracking
       if ((window as any).analytics) {
         (window as any).analytics.track("form_submit_student", {
-          city: data.city,
+          country: data.country,
           grade: data.grade,
         });
       }
@@ -238,12 +235,12 @@ const RegistrationForms = () => {
 
                   <FormField
                     control={teacherForm.control}
-                    name="city"
+                    name="country"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>City *</FormLabel>
+                        <FormLabel>Country *</FormLabel>
                         <FormControl>
-                          <Input placeholder="New York" {...field} />
+                          <Input placeholder="United States" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -264,7 +261,7 @@ const RegistrationForms = () => {
                     )}
                   />
 
-                  <div className="grid sm:grid-cols-2 gap-4">
+                  <div className="grid sm:grid-cols-1 gap-4">
                     <FormField
                       control={teacherForm.control}
                       name="yearsTeaching"
@@ -273,20 +270,6 @@ const RegistrationForms = () => {
                           <FormLabel>Years Teaching *</FormLabel>
                           <FormControl>
                             <Input placeholder="5 years" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-
-                    <FormField
-                      control={teacherForm.control}
-                      name="hourlyRate"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Preferred Hourly Rate *</FormLabel>
-                          <FormControl>
-                            <Input placeholder="$50/hr" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -404,12 +387,12 @@ const RegistrationForms = () => {
 
                   <FormField
                     control={studentForm.control}
-                    name="city"
+                    name="country"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>City *</FormLabel>
+                        <FormLabel>Country *</FormLabel>
                         <FormControl>
-                          <Input placeholder="San Francisco" {...field} />
+                          <Input placeholder="United States" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>

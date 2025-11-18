@@ -17,7 +17,7 @@ export type Database = {
       students: {
         Row: {
           challenges: string
-          city: string
+          country: string
           created_at: string
           email: string
           exam_date: string | null
@@ -28,7 +28,7 @@ export type Database = {
         }
         Insert: {
           challenges: string
-          city: string
+          country: string
           created_at?: string
           email: string
           exam_date?: string | null
@@ -39,7 +39,7 @@ export type Database = {
         }
         Update: {
           challenges?: string
-          city?: string
+          country?: string
           created_at?: string
           email?: string
           exam_date?: string | null
@@ -52,10 +52,9 @@ export type Database = {
       }
       teachers: {
         Row: {
-          city: string
+          country: string
           created_at: string
           email: string
-          hourly_rate: string
           id: string
           name: string
           phone: string | null
@@ -63,10 +62,9 @@ export type Database = {
           years_teaching: string
         }
         Insert: {
-          city: string
+          country: string
           created_at?: string
           email: string
-          hourly_rate: string
           id?: string
           name: string
           phone?: string | null
@@ -74,10 +72,9 @@ export type Database = {
           years_teaching: string
         }
         Update: {
-          city?: string
+          country?: string
           created_at?: string
           email?: string
-          hourly_rate?: string
           id?: string
           name?: string
           phone?: string | null
