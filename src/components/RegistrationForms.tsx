@@ -29,6 +29,7 @@ const teacherFormSchema = z.object({
   consent: z.boolean().refine((val) => val === true, {
     message: "You must agree to be contacted",
   }),
+  honeypot: z.string().max(0, "Invalid submission"), // Bot detection - must be empty
 });
 
 const studentFormSchema = z.object({
@@ -42,6 +43,7 @@ const studentFormSchema = z.object({
   consent: z.boolean().refine((val) => val === true, {
     message: "You must agree to be contacted",
   }),
+  honeypot: z.string().max(0, "Invalid submission"), // Bot detection - must be empty
 });
 
 type TeacherFormData = z.infer<typeof teacherFormSchema>;
@@ -61,6 +63,7 @@ const RegistrationForms = () => {
       subjects: "",
       yearsTeaching: "",
       consent: false,
+      honeypot: "",
     },
   });
 
@@ -75,11 +78,19 @@ const RegistrationForms = () => {
       examDate: "",
       challenges: "",
       consent: false,
+      honeypot: "",
     },
   });
 
   const onTeacherSubmit = async (data: TeacherFormData) => {
     try {
+      // Bot detection - if honeypot is filled, reject silently
+      if (data.honeypot) {
+        setTeacherSubmitted(true);
+        toast.success("Registration successful! We'll be in touch soon.");
+        return;
+      }
+      
       // Save to database
       const { error } = await supabase.from("teachers").insert({
         name: data.name,
@@ -115,6 +126,13 @@ const RegistrationForms = () => {
 
   const onStudentSubmit = async (data: StudentFormData) => {
     try {
+      // Bot detection - if honeypot is filled, reject silently
+      if (data.honeypot) {
+        setStudentSubmitted(true);
+        toast.success("Registration successful! We'll be in touch soon.");
+        return;
+      }
+      
       // Save to database
       const { error } = await supabase.from("students").insert({
         name: data.name,
@@ -306,6 +324,20 @@ const RegistrationForms = () => {
                     )}
                   />
 
+                  {/* Honeypot field - hidden from users, catches bots */}
+                  <FormField
+                    control={teacherForm.control}
+                    name="honeypot"
+                    render={({ field }) => (
+                      <FormItem className="absolute opacity-0 pointer-events-none h-0 overflow-hidden" aria-hidden="true">
+                        <FormLabel>Leave this field empty</FormLabel>
+                        <FormControl>
+                          <Input {...field} tabIndex={-1} autoComplete="off" />
+                        </FormControl>
+                      </FormItem>
+                    )}
+                  />
+
                   <Button type="submit" className="w-full" size="lg">
                     Submit Teacher Application
                     <Send className="ml-2 h-4 w-4" />
@@ -472,6 +504,20 @@ const RegistrationForms = () => {
                           </FormLabel>
                           <FormMessage />
                         </div>
+                      </FormItem>
+                    )}
+                  />
+
+                  {/* Honeypot field - hidden from users, catches bots */}
+                  <FormField
+                    control={studentForm.control}
+                    name="honeypot"
+                    render={({ field }) => (
+                      <FormItem className="absolute opacity-0 pointer-events-none h-0 overflow-hidden" aria-hidden="true">
+                        <FormLabel>Leave this field empty</FormLabel>
+                        <FormControl>
+                          <Input {...field} tabIndex={-1} autoComplete="off" />
+                        </FormControl>
                       </FormItem>
                     )}
                   />
